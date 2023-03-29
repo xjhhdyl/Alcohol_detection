@@ -5,11 +5,11 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
-from sklearn import decomposition, ensemble, datasets, linear_model
-from matplotlib import pyplot as plt
-import seaborn as sns
+from sklearn.metrics import f1_score, precision_score, recall_score, classification_report
+from sklearn.model_selection import GridSearchCV
 import Extracting_features as Exfeatures
-from sklearn.manifold import TSNE
+from sklearn.svm import SVC
+
 """
     机器学习SVM进行醉酒二分类
 """
@@ -147,38 +147,29 @@ mmscale = MinMaxScaler()
 X_sc = mmscale.fit_transform(X)
 
 # 划分数据集
-x_train, x_test, y_train, y_test = train_test_split(X_sc, y, random_state=6, test_size=0.3)
+x_train, x_test, y_train, y_test = train_test_split(X_sc, y, random_state=6, test_size=0.2)
 
-# Top 2 principle compnenets
-pca = decomposition.PCA(n_components=2)
-x_train_vis = pca.fit_transform(x_train)
+clf = SVC(C=10, gamma=0.001, kernel='linear')
 
-fig = plt.figure(figsize=(12, 6))
+# clf = SVC(C=10, gamma=0.001, kernel='linear')
+# grid = {"C": [10, 1e2, 1e3], "gamma": [1e-3, 1e-4, 5e-3], "kernel": ['linear', 'rbf', ]}
+# grid_s = GridSearchCV(clf, grid)
+# grid_s.fit(x_train, y_train)
+# print(grid_s.best_params_)
 
-pc1 = x_train_vis[:, 0]
-pc2 = x_train_vis[:, 1]
+clf.fit(x_train, y_train)
+print("Training accuracy is :-", clf.score(x_train, y_train))
 
-plt.title('PCA on Urban sounds', fontsize=20)
-plt.xlabel("Principal Component 1", fontsize=15)
-plt.ylabel("Principal Component 2", fontsize=15)
+y_train_pred_svm = clf.predict(x_train)
 
-print(pc1.shape, pc2.shape)
-# plt.scatter(pc1, pc2)
-sns.scatterplot(x=pc1, y=pc2, alpha=0.8, palette="Set2", hue=y_train)
+print("Training precision score is :-", precision_score(y_train, y_train_pred_svm, average="macro"))
+print("Training recall is :-", recall_score(y_train, y_train_pred_svm, average="macro"))
 
-plt.show()
+y_pred_svm = clf.predict(x_test)
+print()
+print("Testing precision score is :-", precision_score(y_test, y_pred_svm, average="macro"))
+print("Testing recall is :-", recall_score(y_test, y_pred_svm, average="macro"))
+print()
+print("Testing f1 score is :-", f1_score(y_test, y_pred_svm, average="macro"))
 
-tsne = TSNE(n_components=2, verbose=1, random_state=123, perplexity=15)
-z = tsne.fit_transform(x_train)
-print(z.shape)
-
-df_temp = pd.DataFrame()
-df_temp["y"] = y_train
-df_temp["comp-1"] = z[:, 0]
-df_temp["comp-2"] = z[:, 1]
-
-plt.figure(figsize=(15, 8))
-sns.scatterplot(x="comp-1", y="comp-2", hue=df_temp.y.tolist(),
-                palette=sns.color_palette("hls", 2),
-                data=df_temp).set(title="Audio data T-SNE projection")
-plt.plot()
+print(classification_report(y_test, y_pred_svm))
