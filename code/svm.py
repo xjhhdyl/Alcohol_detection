@@ -14,8 +14,8 @@ from sklearn.svm import SVC
     机器学习SVM进行醉酒二分类
 """
 
-WAV_SOBER_DATA_DIR = "../CollectedData/WAV/sober"  # 醉酒语音数据的文件路径
-WAV_INTOXICATE_DATA_DIR = "../CollectedData/WAV/intoxicate"  # 清醒语音数据的文件路径
+WAV_SOBER_DATA_DIR = "WAV/sober"  # 醉酒语音数据的文件路径
+WAV_INTOXICATE_DATA_DIR = "WAV/intoxicate"  # 清醒语音数据的文件路径
 
 class_labels = {0: "sober",
                 1: "intoxicate"}

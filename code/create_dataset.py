@@ -6,8 +6,8 @@ import pandas as pd
     目前还差融合超声波
 """
 
-WAV_SOBER_DATA_DIR = "../CollectedData/WAV/sober"  # 醉酒语音数据的文件路径
-WAV_INTOXICATE_DATA_DIR = "../CollectedData/WAV/intoxicate"  # 清醒语音数据的文件路径
+WAV_SOBER_DATA_DIR = "WAV/sober"  # 醉酒语音数据的文件路径
+WAV_INTOXICATE_DATA_DIR = "WAV/intoxicate"  # 清醒语音数据的文件路径
 DATASET = "../CollectedData/data.csv"  # 数据集存放的路径
 #  BINS_DATA_DIR = "../CollectedData/BINS"  # 超声波数据集的文件路径
 
