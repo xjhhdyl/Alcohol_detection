@@ -1,6 +1,7 @@
 import torch
 import random
 import numpy as np
+import os
 from torch.utils.data import Dataset, DataLoader
 from pathlib import Path
 from Create_Hparams import Create_Train_Hparams
@@ -59,7 +60,7 @@ class MeldataSet(Dataset):
 
 def generate_pairs_scripts(meldatadir_name, save_log_dir, hp: Create_Train_Hparams):
     data_dir_p = Path(meldatadir_name)  # 转为Path（）对象
-    if save_log_dir.exists() == False:
+    if os.path.exists(save_log_dir) == False:
         print("表单的保存目录不存在！")
         exit()
 
@@ -109,14 +110,14 @@ def generate_pairs_scripts(meldatadir_name, save_log_dir, hp: Create_Train_Hpara
 
     ## 将字典里的东西写入到文件夹。
     ###  写入训练集
-    with open((save_log_dir / "train.txt"), 'a', encoding='utf-8') as f:
+    with open((save_log_dir + "/train.txt"), 'a', encoding='utf-8') as f:
         ## './Experiments/vX/train.txt'
         for k, v in train_scp_dict.items():
             for p in v:
                 f.write(str(p) + "\n")
 
     ###  写入测试集
-    with open((save_log_dir / "test.txt"), 'a', encoding='utf-8') as f:
+    with open((save_log_dir + "/test.txt"), 'a', encoding='utf-8') as f:
         ## './Experiments/vX/test.txt'
         for k, v in test_scp_dict.items():
             for p in v:
@@ -126,5 +127,5 @@ def generate_pairs_scripts(meldatadir_name, save_log_dir, hp: Create_Train_Hpara
 
 
 if __name__ == '__main__':
-    Mdata = MeldataSet('Train_Scp.txt', seglen=2000)
-    print(Mdata[32])
+    hp = Create_Train_Hparams()
+    generate_pairs_scripts('meldata_16k_trimed','dataset', hp)
