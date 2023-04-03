@@ -338,8 +338,8 @@ def plot_hist_of_meldata(datadirname):
 if __name__ == "__main__":
     # ################ preprocess  ###################################
     # # 将语音提取成meldata，用npy存储 （只存储 mel，无其他label）
-    wav_datadir_name = '../CollectedData/WAV'
-    feature_dir_name = '../CollectedData/meldata_16k_trimed'
+    wav_datadir_name = 'WAV'
+    feature_dir_name = 'meldata_16k_trimed'
     preprocess_hp = Create_Prepro_Hparams() # 创建参数类对象
     preprocess_hp.set_preprocess_dir(wav_datadir=wav_datadir_name, feature_dir=feature_dir_name) # 设置 源数据路径和目标路径
     extract_mel_feature_bytaco(preprocess_hp) # 提取 mels特征
