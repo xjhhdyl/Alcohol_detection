@@ -3,6 +3,7 @@ import librosa
 import numpy as np
 import librosa.util as librosa_util
 import torch.nn.functional as F
+import os
 from torch.autograd import Variable
 from scipy.signal import get_window
 from librosa.util import pad_center, tiny
@@ -211,7 +212,8 @@ class TacotronSTFT(torch.nn.Module):
         self.n_mel_channels = n_mel_channels
         self.sampling_rate = sampling_rate
         self.stft_fn = STFT(filter_length, hop_length, win_length)
-        mel_basis = librosa_mel_fn(sr=sampling_rate, n_fft= filter_length, n_mels=n_mel_channels, fmin=mel_fmin, fmax=mel_fmax)
+        mel_basis = librosa_mel_fn(sr=sampling_rate, n_fft=filter_length, n_mels=n_mel_channels, fmin=mel_fmin,
+                                   fmax=mel_fmax)
         mel_basis = torch.from_numpy(mel_basis).float()
         self.register_buffer('mel_basis', mel_basis)
 
@@ -335,19 +337,30 @@ def plot_hist_of_meldata(datadirname):
     plt.show()
 
 
+def generate_scp_dataset(dataset_dir):
+    with open('Train_Scp.txt', 'a', encoding='utf-8') as txtf:
+        for dirname, subdirs, files in os.walk(dataset_dir):
+            for f in files:
+                if f.split('.')[-1] == 'npy':
+                    txtf.write(os.path.join(dirname, f) + "\n")
+    print("写入表单")
+
+
 if __name__ == "__main__":
     # ################ preprocess  ###################################
     # # 将语音提取成meldata，用npy存储 （只存储 mel，无其他label）
     wav_datadir_name = 'WAV'
     feature_dir_name = 'meldata_16k_trimed'
-    preprocess_hp = Create_Prepro_Hparams() # 创建参数类对象
-    preprocess_hp.set_preprocess_dir(wav_datadir=wav_datadir_name, feature_dir=feature_dir_name) # 设置 源数据路径和目标路径
-    extract_mel_feature_bytaco(preprocess_hp) # 提取 mels特征
+    preprocess_hp = Create_Prepro_Hparams()  # 创建参数类对象
+    preprocess_hp.set_preprocess_dir(wav_datadir=wav_datadir_name, feature_dir=feature_dir_name)  # 设置 源数据路径和目标路径
+    extract_mel_feature_bytaco(preprocess_hp)  # 提取 mels特征
 
     ### 观察提取出来的melspec的时长分布图
-    plot_hist_of_meldata("meldata_22k_trimed")
+    plot_hist_of_meldata("meldata_16k_trimed")
     '''
     上面程序的结果为：
     ****************************************************************************************************
-    Melspec length , Mean:199.09066666666666,Max:375,min:41
+    Melspec length , Mean:1458.9545454545455,Max:4607,min:659
+    max:4607,min:659,avg:1458
     '''
+    generate_scp_dataset('meldata_16k_trimed')
