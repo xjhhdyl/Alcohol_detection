@@ -125,7 +125,3 @@ def generate_pairs_scripts(meldatadir_name, save_log_dir, hp: Create_Train_Hpara
 
     print("*" * 30 + "写入 数据集 的 训练测试 表单完毕" + "*" * 30)
 
-
-if __name__ == '__main__':
-    hp = Create_Train_Hparams()
-    generate_pairs_scripts('meldata_16k_trimed','dataset', hp)

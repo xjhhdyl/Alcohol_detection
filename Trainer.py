@@ -5,8 +5,7 @@ from sklearn.metrics import accuracy_score  ###  帮助算 分类准确率
 from torch.utils.data import DataLoader  ### 加载器
 from MyDataset import MeldataSet  ## 读取数据集类
 from Create_Hparams import Create_Train_Hparams  ## 参数控制
-import resnet
-
+from resnet import ResNet18
 class Trainer(object):
 
     def __init__(self, hp: Create_Train_Hparams):
@@ -42,8 +41,10 @@ class Trainer(object):
     def build_models(self):
 
         self.current_lr = self.hp.lr_start
-        self.model = Classifier(input_size=self.hp.n_mels, hidden_size=128, num_layers=2,
-                                num_classes=self.hp.speaker_nums)
+        self.model = ResNet18
+        # 模型需要修改
+        # self.model = Classifier(input_size=self.hp.n_mels, hidden_size=128, num_layers=2,
+        #                         num_classes=self.hp.speaker_nums)
         self.loss_func = nn.CrossEntropyLoss()  ## 分类最常用的交叉熵概率
         self.optimizer = torch.optim.Adam(self.model.parameters(), self.current_lr,
                                           betas=(self.hp.beta1, self.hp.beta2))

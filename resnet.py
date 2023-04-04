@@ -45,7 +45,7 @@ class ResidualBlock(nn.Module):
 class ResNet(nn.Module):
     def __init__(self, ResidualBlock, num_classes=2):
         super(ResNet, self).__init__()
-        self.inchannel = 64
+        self.inchannel = 1
         self.conv1 = nn.Sequential(
             nn.Conv2d(1, 64, kernel_size=3, stride=1, padding=1, bias=False),
             nn.BatchNorm2d(64),  # 设置参数为卷积的输出通道数

@@ -73,15 +73,15 @@ class Create_Train_Hparams():
 class Create_Prepro_Hparams():
     def __init__(self):
         ################ preprocess  ###################################
-        self.wav_datadir_name = 'speaker_verify_dataset'  ### 原始数据集
+        self.wav_datadir_name = 'WAV'  ### 原始数据集
         self.feature_dir_name = 'meldata_16k_trimed'  ## 目标文件夹路径
         self.trim_db = 20  # 静音消除参数
         self.n_fft = 1024  # 提取出 513维度的傅里叶谱，再转为80维度 melspec
         self.win_length = 1024  # 帧长
         self.hop_length = 256  # 帧移
-        self.sample_rate = 22050
+        self.sample_rate = 44100
         self.f_min = 0
-        self.f_max = 11025  ## 谱（还未取对数的时候）中的 数值通常最大值设为 采样率的一半
+        self.f_max = 22050  ## 谱（还未取对数的时候）中的 数值通常最大值设为 采样率的一半
         self.n_mels = 80
 
     def set_preprocess_dir(self, wav_datadir, feature_dir):
