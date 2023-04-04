@@ -9,7 +9,7 @@ class Create_Train_Hparams():
 
         ###
         self.n_mels = 80
-        self.use_meldatadir_name = './meldata_22k_trimed'
+        self.use_meldatadir_name = './meldata_16k_trimed'
 
         ################################################################
         ################ Trainer  ###################################
@@ -41,7 +41,7 @@ class Create_Train_Hparams():
         self.is_lr_decay = False  ## 训练过程中学习率是否下降
 
         ####################### model params #########################################
-        self.speaker_nums = 5  ## 数据集的分类数量。
+        self.speaker_nums = 2  ## 数据集的分类数量。
 
         ################################################################
         ## Experiment File dir
@@ -74,7 +74,7 @@ class Create_Prepro_Hparams():
     def __init__(self):
         ################ preprocess  ###################################
         self.wav_datadir_name = 'speaker_verify_dataset'  ### 原始数据集
-        self.feature_dir_name = 'meldata_22k_trimed'  ## 目标文件夹路径
+        self.feature_dir_name = 'meldata_16k_trimed'  ## 目标文件夹路径
         self.trim_db = 20  # 静音消除参数
         self.n_fft = 1024  # 提取出 513维度的傅里叶谱，再转为80维度 melspec
         self.win_length = 1024  # 帧长
