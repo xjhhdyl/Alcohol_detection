@@ -13,7 +13,7 @@ class Create_Train_Hparams():
 
         ################################################################
         ################ Trainer  ###################################
-        self.total_iters = 1000  ## 总共训练步骤
+        self.total_iters = 100  ## 总共训练步骤
         self.device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
         self.model_save_every = 200  ## 每隔200次 保存一次模型
         self.lr_update_every = 200
@@ -21,9 +21,9 @@ class Create_Train_Hparams():
 
         ################ dataset / loader  ###################################
         self.train_ratio = 0.9  ## 切分训练集、测试集的比例
-        self.mel_seglen = 256  ###  训练时，谱被padding的长度
-        self.min_train_mellen = 120  ### 生成表单中，所含有的 pairs的最大melspec长度。
-        self.batchsize_train = 12  ## 训练的batchsize
+        self.mel_seglen = 600  ###  训练时，谱被padding的长度
+        self.min_train_mellen = 2000  ### 生成表单中，所含有的 pairs的最大melspec长度。
+        self.batchsize_train = 3  ## 训练的batchsize
         ################ model params ################################
 
         # 这里的模型不提供 修改模型结构的参数

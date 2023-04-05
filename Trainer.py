@@ -41,10 +41,7 @@ class Trainer(object):
     def build_models(self):
 
         self.current_lr = self.hp.lr_start
-        self.model = ResNet18
-        # 模型需要修改
-        # self.model = Classifier(input_size=self.hp.n_mels, hidden_size=128, num_layers=2,
-        #                         num_classes=self.hp.speaker_nums)
+        self.model = ResNet18()
         self.loss_func = nn.CrossEntropyLoss()  ## 分类最常用的交叉熵概率
         self.optimizer = torch.optim.Adam(self.model.parameters(), self.current_lr,
                                           betas=(self.hp.beta1, self.hp.beta2))

@@ -27,13 +27,13 @@ if __name__ == "__main__":
     ## 然后 运行main.py
     ## 注意  ，不要 已经运行过一次 "v1"，又运行一次 ver=v1 的main.py ,会出问题。
     ver = 'v1'
-    vhp = boot_a_new_experiment(epversion=ver, mel_segm_len=2000, tt_iters=1500, train_batchsize=12, start_lr=0.0001,
+    vhp = boot_a_new_experiment(epversion=ver, mel_segm_len=2000, tt_iters=1500, train_batchsize=2, start_lr=0.0001,
                                 )
     generate_pairs_scripts('meldata_16k_trimed',  ## 指定所使用的特征数据文件夹。
                            vhp.ep_version_dir,  ## 指定表单保存路径
                            vhp,
                            )
-    ## 训练 ,从刚才生成的pickle读取 hp
+    # 训练 ,从刚才生成的pickle读取 hp
     hp_file_path = str(vhp.hp_filepath)
     loaded_hp = None
     with open(hp_file_path, 'rb') as f2:

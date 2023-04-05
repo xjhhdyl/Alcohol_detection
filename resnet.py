@@ -45,7 +45,7 @@ class ResidualBlock(nn.Module):
 class ResNet(nn.Module):
     def __init__(self, ResidualBlock, num_classes=2):
         super(ResNet, self).__init__()
-        self.inchannel = 1
+        self.inchannel = 64
         self.conv1 = nn.Sequential(
             nn.Conv2d(1, 64, kernel_size=3, stride=1, padding=1, bias=False),
             nn.BatchNorm2d(64),  # 设置参数为卷积的输出通道数
@@ -56,7 +56,7 @@ class ResNet(nn.Module):
         self.layer2 = self.make_layer(ResidualBlock, 128, 2, stride=2)
         self.layer3 = self.make_layer(ResidualBlock, 256, 2, stride=2)
         self.layer4 = self.make_layer(ResidualBlock, 512, 2, stride=2)
-        self.fc = nn.Linear(512, num_classes)  # 全连接层(1,512)-->(1,10)
+        self.fc = nn.Linear(63488, num_classes)  # 全连接层(1,512)-->(1,10)
 
     def make_layer(self, block, channels, num_blocks, stride):
         # 该计算为列表组合

@@ -1,0 +1,2 @@
+meldata_16k_trimed\intoxicate\SingleWav16.npy
+meldata_16k_trimed\intoxicate\SingleWav20.npy

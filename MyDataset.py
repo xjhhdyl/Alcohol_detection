@@ -39,8 +39,6 @@ class MeldataSet(Dataset):
             for l in f.readlines():
                 self.scripts.append(l.strip('\n'))
         self.L = len((self.scripts))
-        # self.speaker_names_set = list(set([p.split("\\")[1] for p in self.scripts]))
-        # print(self.speaker_names_set.__len__())
         pass
 
     def __getitem__(self, index):
@@ -110,14 +108,14 @@ def generate_pairs_scripts(meldatadir_name, save_log_dir, hp: Create_Train_Hpara
 
     ## 将字典里的东西写入到文件夹。
     ###  写入训练集
-    with open((save_log_dir + "/train.txt"), 'a', encoding='utf-8') as f:
+    with open((save_log_dir / "train.txt"), 'a', encoding='utf-8') as f:
         ## './Experiments/vX/train.txt'
         for k, v in train_scp_dict.items():
             for p in v:
                 f.write(str(p) + "\n")
 
     ###  写入测试集
-    with open((save_log_dir + "/test.txt"), 'a', encoding='utf-8') as f:
+    with open((save_log_dir / "test.txt"), 'a', encoding='utf-8') as f:
         ## './Experiments/vX/test.txt'
         for k, v in test_scp_dict.items():
             for p in v:
@@ -125,3 +123,5 @@ def generate_pairs_scripts(meldatadir_name, save_log_dir, hp: Create_Train_Hpara
 
     print("*" * 30 + "写入 数据集 的 训练测试 表单完毕" + "*" * 30)
 
+if __name__ == "__main__":
+    print()

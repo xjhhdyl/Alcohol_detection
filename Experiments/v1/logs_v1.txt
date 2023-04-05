@@ -1,0 +1,106 @@
+n_mels : 80
+use_meldatadir_name : ./meldata_16k_trimed
+total_iters : 1500
+device : cuda:0
+model_save_every : 200
+lr_update_every : 200
+eval_every : 50
+train_ratio : 0.9
+mel_seglen : 2000
+min_train_mellen : 2000
+batchsize_train : 2
+lr_start : 0.0001
+beta1 : 0.9
+beta2 : 0.999
+amsgrad : True
+weight_decay : 0.0001
+grad_norm : 3
+is_lr_decay : False
+speaker_nums : 2
+epdir : Experiments
+ep_version : v1
+ep_version_dir : Experiments\v1
+model_savedir : Experiments\v1\checkpoints_v1
+hp_filepath : Experiments\v1\hparams_v1.pickle
+ep_logfilepath : Experiments\v1\logs_v1.txt
+ep_logfilepath_eval : Experiments\v1\logs_eval_v1.txt
+conversion_dir : Experiments\v1\conversion_result_v1
+--------------------------------------------------Experiment & Hparams Created--------------------------------------------------
+****************************************************************************************************
+train_step--:,epoch:1,steps:1,loss:1.16077721118927,acc:0.0,
+train_step--:,epoch:2,steps:2,loss:1.3709059203392826e-06,acc:1.0,
+train_step--:,epoch:3,steps:3,loss:0.0,acc:1.0,
+train_step--:,epoch:4,steps:4,loss:0.0,acc:1.0,
+train_step--:,epoch:5,steps:5,loss:0.0,acc:1.0,
+train_step--:,epoch:6,steps:6,loss:0.0,acc:1.0,
+train_step--:,epoch:7,steps:7,loss:0.0,acc:1.0,
+train_step--:,epoch:8,steps:8,loss:0.0,acc:1.0,
+train_step--:,epoch:9,steps:9,loss:0.0,acc:1.0,
+train_step--:,epoch:10,steps:10,loss:0.0,acc:1.0,
+train_step--:,epoch:11,steps:11,loss:0.0,acc:1.0,
+train_step--:,epoch:12,steps:12,loss:0.0,acc:1.0,
+train_step--:,epoch:13,steps:13,loss:0.0,acc:1.0,
+train_step--:,epoch:14,steps:14,loss:0.0,acc:1.0,
+train_step--:,epoch:15,steps:15,loss:0.0,acc:1.0,
+train_step--:,epoch:16,steps:16,loss:0.0,acc:1.0,
+train_step--:,epoch:17,steps:17,loss:0.0,acc:1.0,
+train_step--:,epoch:18,steps:18,loss:0.0,acc:1.0,
+train_step--:,epoch:19,steps:19,loss:0.0,acc:1.0,
+train_step--:,epoch:20,steps:20,loss:0.0,acc:1.0,
+train_step--:,epoch:21,steps:21,loss:0.0,acc:1.0,
+train_step--:,epoch:22,steps:22,loss:0.0,acc:1.0,
+train_step--:,epoch:23,steps:23,loss:0.0,acc:1.0,
+train_step--:,epoch:24,steps:24,loss:0.0,acc:1.0,
+train_step--:,epoch:25,steps:25,loss:0.0,acc:1.0,
+train_step--:,epoch:26,steps:26,loss:0.0,acc:1.0,
+train_step--:,epoch:27,steps:27,loss:0.0,acc:1.0,
+train_step--:,epoch:28,steps:28,loss:0.0,acc:1.0,
+train_step--:,epoch:29,steps:29,loss:0.0,acc:1.0,
+train_step--:,epoch:30,steps:30,loss:0.0,acc:1.0,
+train_step--:,epoch:31,steps:31,loss:0.0,acc:1.0,
+train_step--:,epoch:32,steps:32,loss:0.0,acc:1.0,
+train_step--:,epoch:33,steps:33,loss:0.0,acc:1.0,
+train_step--:,epoch:34,steps:34,loss:0.0,acc:1.0,
+train_step--:,epoch:35,steps:35,loss:0.0,acc:1.0,
+train_step--:,epoch:36,steps:36,loss:0.0,acc:1.0,
+train_step--:,epoch:37,steps:37,loss:0.0,acc:1.0,
+train_step--:,epoch:38,steps:38,loss:0.0,acc:1.0,
+train_step--:,epoch:39,steps:39,loss:0.0,acc:1.0,
+train_step--:,epoch:40,steps:40,loss:0.0,acc:1.0,
+train_step--:,epoch:41,steps:41,loss:0.0,acc:1.0,
+train_step--:,epoch:42,steps:42,loss:0.0,acc:1.0,
+train_step--:,epoch:43,steps:43,loss:0.0,acc:1.0,
+train_step--:,epoch:44,steps:44,loss:0.0,acc:1.0,
+train_step--:,epoch:45,steps:45,loss:0.0,acc:1.0,
+train_step--:,epoch:46,steps:46,loss:0.0,acc:1.0,
+train_step--:,epoch:47,steps:47,loss:0.0,acc:1.0,
+train_step--:,epoch:48,steps:48,loss:0.0,acc:1.0,
+train_step--:,epoch:49,steps:49,loss:0.0,acc:1.0,
+train_step--:,epoch:50,steps:50,loss:0.0,acc:1.0,
+train_step--:,epoch:51,steps:51,loss:0.0,acc:1.0,
+train_step--:,epoch:52,steps:52,loss:0.0,acc:1.0,
+train_step--:,epoch:53,steps:53,loss:0.0,acc:1.0,
+train_step--:,epoch:54,steps:54,loss:0.0,acc:1.0,
+train_step--:,epoch:55,steps:55,loss:0.0,acc:1.0,
+train_step--:,epoch:56,steps:56,loss:0.0,acc:1.0,
+train_step--:,epoch:57,steps:57,loss:0.0,acc:1.0,
+train_step--:,epoch:58,steps:58,loss:0.0,acc:1.0,
+train_step--:,epoch:59,steps:59,loss:0.0,acc:1.0,
+train_step--:,epoch:60,steps:60,loss:0.0,acc:1.0,
+train_step--:,epoch:61,steps:61,loss:0.0,acc:1.0,
+train_step--:,epoch:62,steps:62,loss:0.0,acc:1.0,
+train_step--:,epoch:63,steps:63,loss:0.0,acc:1.0,
+train_step--:,epoch:64,steps:64,loss:0.0,acc:1.0,
+train_step--:,epoch:65,steps:65,loss:0.0,acc:1.0,
+train_step--:,epoch:66,steps:66,loss:0.0,acc:1.0,
+train_step--:,epoch:67,steps:67,loss:0.0,acc:1.0,
+train_step--:,epoch:68,steps:68,loss:0.0,acc:1.0,
+train_step--:,epoch:69,steps:69,loss:0.0,acc:1.0,
+train_step--:,epoch:70,steps:70,loss:0.0,acc:1.0,
+train_step--:,epoch:71,steps:71,loss:0.0,acc:1.0,
+train_step--:,epoch:72,steps:72,loss:0.0,acc:1.0,
+train_step--:,epoch:73,steps:73,loss:0.0,acc:1.0,
+train_step--:,epoch:74,steps:74,loss:0.0,acc:1.0,
+train_step--:,epoch:75,steps:75,loss:0.0,acc:1.0,
+train_step--:,epoch:76,steps:76,loss:0.0,acc:1.0,
+train_step--:,epoch:77,steps:77,loss:0.0,acc:1.0,
